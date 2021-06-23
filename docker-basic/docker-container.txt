@@ -1,0 +1,37 @@
+#run/create cotainer
+
+sudo docker run --name webserver -p 80:80 -it ubuntu /bin/bash
+-> apt update
+-> apt install apache2 -y
+-> service apache2 status
+-> service apache2 start
+-> service apache2 stop
+-> git clone https://github.com/wahidKhan74/phase4-bootstrap-website.git
+-> cp -r phase4-bootstrap-website/*  /var/www/html/
+-> service apache2 restart
+-> exit container -> exit -> stop
+
+#start container
+sudo docker container start <container-name / container-id>
+sudo docker container start d3872b30e9a7
+sudo docker container start webserver
+
+# stop container
+sudo docker container stop <container-name / container-id>
+sudo docker container stop d3872b30e9a7
+sudo docker container stop webserver
+
+# stop container
+sudo docker container restart <container-name / container-id>
+sudo docker container restart d3872b30e9a7
+sudo docker container restart webserver
+
+# delete/remove container
+sudo docker container rm <container-name / container-id>
+sudo docker container rm d3872b30e9a7
+sudo docker container rm webserver
+
+# force delete/remove container
+sudo docker container rm -f <container-name / container-id>
+sudo docker container rm -f d3872b30e9a7
+sudo docker container rm -f webserver
