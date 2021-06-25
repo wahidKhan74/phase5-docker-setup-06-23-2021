@@ -1,0 +1,39 @@
+# Docker Volume : Persistance storage for container
+
+# Docker container without Volume
+-> Docker container running -> storage driver -> Writable layer  -> Host file system.
+-> Every container has sperate data storage
+-> If we stop the container will not able to access container file system
+> sudo docker pull nginx
+> sudo docker run -it --name=webApp -p 80:80 -d nginx
+> sudo docker ps -a
+> sudo docker exec -it webApp bash
+> cd /usr/share/nginx/html
+> echo "I changed the content fo default nginx server !" > index.html
+
+# create a Volume
+> sudo docker volume create <volume-name>
+> sudo docker volume create shared-volume
+
+# list volume 
+sudo docker volume ls
+
+# inpect volume
+sudo docker volume inspect <volume-name>
+sudo docker volume inspect shared-volume
+
+# remove volume
+sudo docker volume rm <volume-name>
+sudo docker volume rm shared-volume
+
+---------------------------------------------------------
+# Docker container with Volume
+
+> sudo docker run --name=webApp1 --mount source=shared-volume,destination=/usr/share/nginx/html -p 80:80 -d nginx
+> sudo docker run --name=webApp2 --mount source=shared-volume,destination=/usr/share/nginx/html -p 8081:80 -d nginx
+
+# Change data into shared volume 
+> sudo -i
+> cd /var/lib/docker/volumes/
+> cd shared-volume/_data/
+> echo "I changed the content fo default nginx server !" > index.html

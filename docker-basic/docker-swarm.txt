@@ -1,0 +1,37 @@
+# first initialize a docker swarm cluster
+-> sudo docker swarm init
+
+# verify created node
+-> sudo docker node ls
+
+# deploy docker custom image based container, to docker a swarm cluster as a service
+
+-> sudo docker service create -p 80:80 --name php-webservice phpcode
+
+# list service 
+-> sudo docker service ls
+
+------------------------------------------------
+2. scalling up docker container with swarm
+------------------------------------------------
+# increase the service replica
+-> sudo docker service scale  php-webservice=4
+
+# list service 
+-> sudo docker service ls
+
+# list container 
+-> sudo docker ps -a
+
+# decrease the service replica
+-> sudo docker service scale  php-webservice=2
+
+# list service 
+-> sudo docker service ls
+
+# list container 
+-> sudo docker ps -a
+
+
+
+
