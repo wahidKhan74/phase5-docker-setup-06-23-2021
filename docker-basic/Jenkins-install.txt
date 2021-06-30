@@ -1,0 +1,34 @@
+# update system repositories
+sudo apt update
+
+# install jdk 
+sudo apt install default-jdk -y
+
+# install maven
+sudo apt install maven -y 
+
+# install jenkins
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+sudo apt-get update
+
+sudo apt-get install jenkins -y
+
+link : https://www.jenkins.io/doc/book/installing/linux/
+windows os : https://www.jenkins.io/doc/book/installing/windows/
+others : https://www.jenkins.io/doc/book/installing/
+
+
+# Jenkins service status
+> sudo service jenkins status
+
+# Jenkins service start
+> sudo service jenkins start
+
+# Jenkins service stop
+> sudo service jenkins stop
+
+# Jenkins service restart
+> sudo service jenkins restart
