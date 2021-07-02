@@ -1,0 +1,34 @@
+# step 1 : create namespace
+kubectl create namespace deployment
+# step 2 : create a kubernetes deployment pod
+
+kubectl run ecom-webserice-kube2 --image=wahid74/ecom-webservice  --port=8081
+kubectl expose pod/ecom-webserice-kube2 --port=8081 --target-port=8081 --type=LoadBalancer
+
+-----------------------------------------------------
+
+kubectl run phpcode  --image=wahid74/phpcode  --port=80 
+kubectl expose pod/phpcode --port=80 --target-port=80 --type=LoadBalancer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#list all nodes
+> kubectl get nodes
+#list all pod
+> kubectl get pods
+# list all service 
+> kubectl get service
