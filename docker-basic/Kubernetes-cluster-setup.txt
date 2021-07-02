@@ -1,0 +1,28 @@
+# kubectl
+kubectl version --client
+
+#1 Kubeadm : Tool to create / initialize cluster
+> sudo -i
+> kubeadm init
+# Your Kubernetes control-plane has initialized successfully!
+
+
+# To start using your cluster, you need to run the following as a regular user:
+
+  > mkdir -p $HOME/.kube
+  > sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  > sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+#2 Alternatively, if you are the root user, you can run:
+
+  > export KUBECONFIG=/etc/kubernetes/admin.conf
+
+ kubeadm join 172.31.17.133:6443 --token nml5q5.pdufr53qkyktibvd \
+        --discovery-token-ca-cert-hash sha256:7064e114ebbe9bfedc427b1be5154cac1bdf70b48f91d7accf76c2ba3f722156
+
+> kubectl cluster-info
+> kubectl describe node
+
+#3. After cluster get started , deploy a weave network to the cluster
+export kubever=$(kubectl version | base64 | tr -d '\n')
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
